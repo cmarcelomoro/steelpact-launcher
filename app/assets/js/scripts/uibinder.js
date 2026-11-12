@@ -69,8 +69,20 @@ async function showMainUI(data){
     refreshServerStatus()
     setTimeout(() => {
         document.getElementById('frameBar').style.backgroundColor = 'rgba(0, 0, 0, 0.5)'
-        document.body.style.backgroundImage = `url('assets/images/backgrounds/${document.body.getAttribute('bkid')}.jpg')`
+        document.body.style.backgroundImage = `url('assets/images/backgrounds/${document.body.getAttribute('bkid')}.png')`
         $('#main').show()
+
+        // Background slideshow with smooth transition
+        const totalBgs = 6
+        let currentBgIndex = parseInt(document.body.getAttribute('bkid'), 10) || 0
+        setInterval(() => {
+            currentBgIndex = (currentBgIndex + 1) % totalBgs
+            const nextImg = new Image()
+            nextImg.src = `assets/images/backgrounds/${currentBgIndex}.png`
+            nextImg.onload = () => {
+                document.body.style.backgroundImage = `url('${nextImg.src}')`
+            }
+        }, 10000)
 
         const isLoggedIn = Object.keys(ConfigManager.getAuthAccounts()).length > 0
 
