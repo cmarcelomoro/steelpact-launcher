@@ -105,10 +105,39 @@ function changeAllowPrerelease(val){
 }
 
 function showUpdateUI(info){
-    //TODO Make this message a bit more informative `${info.version}`
     document.getElementById('image_seal_container').setAttribute('update', true)
-    document.getElementById('image_seal_container').onclick = () => {
-        /*setOverlayContent('Update Available', 'A new update for the launcher is available. Would you like to install now?', 'Install', 'Later')
+    
+    // Adicionar badge textual visível de atualização disponível
+    let badge = document.getElementById('updateAvailableBadge')
+    if(!badge){
+        badge = document.createElement('div')
+        badge.id = 'updateAvailableBadge'
+        badge.style.position = 'absolute'
+        badge.style.top = '125px'
+        badge.style.left = '50%'
+        badge.style.transform = 'translateX(-50%)'
+        badge.style.background = '#27ae60'
+        badge.style.color = '#ffffff'
+        badge.style.padding = '4px 10px'
+        badge.style.borderRadius = '12px'
+        badge.style.fontSize = '11px'
+        badge.style.fontWeight = 'bold'
+        badge.style.cursor = 'pointer'
+        badge.style.boxShadow = '0 0 10px rgba(39, 174, 96, 0.8)'
+        badge.style.zIndex = '30'
+        badge.style.letterSpacing = '0.5px'
+        badge.innerHTML = `${Lang.queryJS('uicore.autoUpdate.updateAvailableTitle')} v${info.version}`
+        const parent = document.getElementById('image_seal_container').parentElement
+        if(parent) parent.appendChild(badge)
+    }
+
+    const openUpdatePrompt = () => {
+        setOverlayContent(
+            Lang.queryJS('uicore.autoUpdate.updateAvailableTitle'),
+            Lang.queryJS('uicore.autoUpdate.updateAvailableDesc', { version: info.version }),
+            Lang.queryJS('uicore.autoUpdate.installButton'),
+            Lang.queryJS('uicore.autoUpdate.laterButton')
+        )
         setOverlayHandler(() => {
             if(!isDev){
                 ipcRenderer.send('autoUpdateAction', 'installUpdateNow')
@@ -120,11 +149,14 @@ function showUpdateUI(info){
         setDismissHandler(() => {
             toggleOverlay(false)
         })
-        toggleOverlay(true, true)*/
-        switchView(getCurrentView(), VIEWS.settings, 500, 500, () => {
-            settingsNavItemListener(document.getElementById('settingsNavUpdate'), false)
-        })
+        toggleOverlay(true, true)
     }
+
+    document.getElementById('image_seal_container').onclick = openUpdatePrompt
+    if(badge) badge.onclick = openUpdatePrompt
+
+    // Exibir popup automático na primeira vez que a atualização for baixada
+    openUpdatePrompt()
 }
 
 /* jQuery Example

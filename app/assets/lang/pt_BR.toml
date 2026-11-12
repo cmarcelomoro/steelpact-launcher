@@ -305,6 +305,10 @@ selectAnotherAccountButton = "Trocar de Conta"
 checkingForUpdateButton = "Buscando atualizações..."
 installNowButton = "Instalar Agora"
 checkForUpdatesButton = "Buscar Atualizações"
+updateAvailableTitle = "Atualização Disponível"
+updateAvailableDesc = "Uma nova versão (v{version}) do Launcher do SteelPact foi baixada e está pronta para instalar."
+installButton = "Reiniciar e Instalar"
+laterButton = "Mais Tarde"
 
 [js.auth.microsoft.error]
 noProfileTitle = "Erro no Login:<br>Perfil não Configurado"
