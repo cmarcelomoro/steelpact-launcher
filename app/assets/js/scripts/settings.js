@@ -358,10 +358,9 @@ function saveLanguageSettings() {
     ConfigManager.setLanguage(chosen)
     ConfigManager.save()
     if(previous !== chosen) {
-        // Reload launcher window to apply language everywhere smoothly
-        setTimeout(() => {
-            remote.getCurrentWindow().reload()
-        }, 100)
+        // Relaunch the whole application so Main Process and EJS templates re-render in the new language
+        remote.app.relaunch()
+        remote.app.exit(0)
     }
 }
 
@@ -698,8 +697,8 @@ function populateAuthAccounts(){
                         <div class="settingsAuthAccountDetailValue">${acc.displayName}</div>
                     </div>
                     <div class="settingsAuthAccountDetailPane">
-                        <div class="settingsAuthAccountDetailTitle">Tipo</div>
-                        <div class="settingsAuthAccountDetailValue">${acc.type === 'microsoft' ? 'Microsoft' : 'Offline / Pirata'}</div>
+                        <div class="settingsAuthAccountDetailTitle">${Lang.queryJS('settings.authAccountPopulate.accountType')}</div>
+                        <div class="settingsAuthAccountDetailValue">${acc.type === 'microsoft' ? Lang.queryJS('settings.authAccountPopulate.accountTypeMicrosoft') : Lang.queryJS('settings.authAccountPopulate.accountTypeOffline')}</div>
                     </div>
                 </div>
                 <div class="settingsAuthAccountActions">
