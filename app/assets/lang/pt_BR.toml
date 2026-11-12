@@ -201,7 +201,7 @@ errorDuringFileDownloadTitle = "Erro no Download dos Arquivos"
 preparingToLaunch = "Preparando ambiente de jogo.."
 launchingGame = "Iniciando o Minecraft SteelPact.."
 launchWrapperNotDownloaded = "Falha ao descompactar componentes do Forge."
-doneEnjoyServer = "Pronto! Bom jogo no SteelPact!"
+doneEnjoyServer = "Carregando mods na memória... Por favor, aguarde sem clicar na janela do jogo."
 checkConsoleForDetails = "Verifique o console para mais detalhes."
 
 [js.landing.news]
