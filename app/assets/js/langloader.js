@@ -51,17 +51,28 @@ function getSystemLanguage() {
     return Intl.DateTimeFormat().resolvedOptions().locale.replace('-', '_')
 }
 
+function getSavedConfigLanguage() {
+    try {
+        const sysRoot = process.env.APPDATA || (process.platform === 'darwin' ? process.env.HOME + '/Library/Application Support' : process.env.HOME)
+        const configPath = path.join(sysRoot, 'SteelPact', 'config.json')
+        if (fs.existsSync(configPath)) {
+            const cfg = fs.readJsonSync(configPath)
+            if (cfg && cfg.settings && cfg.settings.launcher && cfg.settings.launcher.language) {
+                return cfg.settings.launcher.language
+            }
+        }
+    } catch (_e) {}
+    return null
+}
+
 exports.getEffectiveLanguage = function(selectedLang) {
     if (selectedLang) {
         return selectedLang
     }
-    try {
-        const ConfigManager = require('./configmanager')
-        const cfgLang = ConfigManager.getLanguage()
-        if (cfgLang) {
-            return cfgLang
-        }
-    } catch (_e) {}
+    const saved = getSavedConfigLanguage()
+    if (saved) {
+        return saved
+    }
 
     const sys = getSystemLanguage()
     if (sys.startsWith('pt')) {

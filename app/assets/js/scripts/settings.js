@@ -356,19 +356,22 @@ function saveLanguageSettings() {
     }
     const previous = ConfigManager.getLanguage()
     ConfigManager.setLanguage(chosen)
+    ConfigManager.save()
     if(previous !== chosen) {
         // Reload launcher window to apply language everywhere smoothly
-        remote.getCurrentWindow().reload()
+        setTimeout(() => {
+            remote.getCurrentWindow().reload()
+        }, 100)
     }
 }
 
 function fullSettingsSave() {
     saveSettingsValues()
     saveModConfiguration()
-    saveLanguageSettings()
-    ConfigManager.save()
     saveDropinModConfiguration()
     saveShaderpackSettings()
+    saveLanguageSettings()
+    ConfigManager.save()
 }
 
 /* Closes the settings view and saves all data. */
