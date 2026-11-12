@@ -342,13 +342,17 @@ settingsNavDone.onclick = () => {
 const msftLoginLogger = LoggerUtil.getLogger('Microsoft Login')
 const msftLogoutLogger = LoggerUtil.getLogger('Microsoft Logout')
 
-// Bind the add mojang account button.
-document.getElementById('settingsAddMojangAccount').onclick = (e) => {
-    switchView(getCurrentView(), VIEWS.login, 500, 500, () => {
-        loginViewOnCancel = VIEWS.settings
-        loginViewOnSuccess = VIEWS.settings
-        loginCancelEnabled(true)
-    })
+// Bind the add offline account button.
+const settingsAddOfflineBtn = document.getElementById('settingsAddOfflineAccount')
+if(settingsAddOfflineBtn){
+    settingsAddOfflineBtn.onclick = (e) => {
+        setOfflineMode(true)
+        switchView(getCurrentView(), VIEWS.login, 500, 500, () => {
+            loginViewOnCancel = VIEWS.settings
+            loginViewOnSuccess = VIEWS.settings
+            loginCancelEnabled(true)
+        })
+    }
 }
 
 // Bind the add microsoft account button.
@@ -619,7 +623,7 @@ function refreshAuthAccountSelected(uuid){
 }
 
 const settingsCurrentMicrosoftAccounts = document.getElementById('settingsCurrentMicrosoftAccounts')
-const settingsCurrentMojangAccounts = document.getElementById('settingsCurrentMojangAccounts')
+const settingsCurrentOfflineAccounts = document.getElementById('settingsCurrentOfflineAccounts')
 
 /**
  * Add auth account elements for each one stored in the authentication database.
@@ -633,14 +637,14 @@ function populateAuthAccounts(){
     const selectedUUID = ConfigManager.getSelectedAccount().uuid
 
     let microsoftAuthAccountStr = ''
-    let mojangAuthAccountStr = ''
+    let offlineAuthAccountStr = ''
 
     authKeys.forEach((val) => {
         const acc = authAccounts[val]
 
         const accHtml = `<div class="settingsAuthAccount" uuid="${acc.uuid}">
             <div class="settingsAuthAccountLeft">
-                <img class="settingsAuthAccountImage" alt="${acc.displayName}" src="https://mc-heads.net/body/${acc.uuid}/60">
+                <img class="settingsAuthAccountImage" alt="${acc.displayName}" src="https://mc-heads.net/body/${acc.displayName}/60">
             </div>
             <div class="settingsAuthAccountRight">
                 <div class="settingsAuthAccountDetails">
@@ -649,8 +653,8 @@ function populateAuthAccounts(){
                         <div class="settingsAuthAccountDetailValue">${acc.displayName}</div>
                     </div>
                     <div class="settingsAuthAccountDetailPane">
-                        <div class="settingsAuthAccountDetailTitle">${Lang.queryJS('settings.authAccountPopulate.uuid')}</div>
-                        <div class="settingsAuthAccountDetailValue">${acc.uuid}</div>
+                        <div class="settingsAuthAccountDetailTitle">Tipo</div>
+                        <div class="settingsAuthAccountDetailValue">${acc.type === 'microsoft' ? 'Microsoft' : 'Offline / Pirata'}</div>
                     </div>
                 </div>
                 <div class="settingsAuthAccountActions">
@@ -665,13 +669,13 @@ function populateAuthAccounts(){
         if(acc.type === 'microsoft') {
             microsoftAuthAccountStr += accHtml
         } else {
-            mojangAuthAccountStr += accHtml
+            offlineAuthAccountStr += accHtml
         }
 
     })
 
-    settingsCurrentMicrosoftAccounts.innerHTML = microsoftAuthAccountStr
-    settingsCurrentMojangAccounts.innerHTML = mojangAuthAccountStr
+    if(settingsCurrentMicrosoftAccounts) settingsCurrentMicrosoftAccounts.innerHTML = microsoftAuthAccountStr
+    if(settingsCurrentOfflineAccounts) settingsCurrentOfflineAccounts.innerHTML = offlineAuthAccountStr
 }
 
 /**

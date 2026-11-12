@@ -601,6 +601,9 @@ async function dlAsync(login = true) {
             if(data.indexOf('Could not find or load main class net.minecraft.launchwrapper.Launch') > -1){
                 loggerLaunchSuite.error('Game launch failed, LaunchWrapper was not downloaded properly.')
                 showLaunchFailure(Lang.queryJS('landing.dlAsync.errorDuringLaunchTitle'), Lang.queryJS('landing.dlAsync.launchWrapperNotDownloaded'))
+            } else if(data.indexOf('Could not reserve enough space for object heap') > -1){
+                loggerLaunchSuite.error('Game launch failed, memory allocation error.')
+                showLaunchFailure('Memória RAM Insuficiente', 'O Java não conseguiu alocar 4GB de RAM contínua no seu PC.<br><br>Abra as <strong>Configurações (engrenagem) > Java</strong> e reduza a <strong>RAM Máxima</strong> para <strong>2GB ou 3GB</strong>.')
             }
         }
 

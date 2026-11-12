@@ -1,8 +1,8 @@
 {
-  "name": "helioslauncher",
-  "version": "2.2.1",
-  "productName": "Helios Launcher",
-  "description": "Modded Minecraft Launcher",
+  "name": "steelpact-launcher",
+  "version": "1.0.0",
+  "productName": "SteelPact",
+  "description": "Launcher Oficial do SteelPact - Soberania e Guerra",
   "author": "Daniel Scalzi (https://github.com/dscalzi/)",
   "license": "UNLICENSED",
   "homepage": "https://github.com/dscalzi/HeliosLauncher",
@@ -47,6 +47,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dscalzi/HeliosLauncher.git"
+    "url": "git+https://github.com/cmarcelomoro/steelpact-launcher.git"
   }
 }

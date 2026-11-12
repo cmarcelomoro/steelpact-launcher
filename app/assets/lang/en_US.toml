@@ -35,10 +35,11 @@ loginPasswordDisclaimer1 = "Your password is sent directly to mojang and never s
 loginPasswordDisclaimer2 = "{appName} is not affiliated with Mojang AB."
 
 [ejs.loginOptions]
-loginOptionsTitle = "Login Options"
-loginWithMicrosoft = "Login with Microsoft"
-loginWithMojang = "Login with Mojang"
-cancelButton = "Cancel"
+loginOptionsTitle = "Opções de Login"
+loginWithMicrosoft = "Conta Microsoft (Original)"
+loginWithMojang = "Conta Mojang Legada"
+loginWithOffline = "Jogar Offline (Não-Original)"
+cancelButton = "Cancelar"
 
 [ejs.overlay]
 serverSelectHeader = "Available Servers"

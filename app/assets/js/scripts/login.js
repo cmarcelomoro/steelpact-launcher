@@ -20,6 +20,39 @@ const loginForm             = document.getElementById('loginForm')
 
 // Control variables.
 let lu = false, lp = false
+let isOfflineMode = false
+
+function setOfflineMode(enabled){
+    isOfflineMode = enabled
+    const passFieldContainer = loginPassword.closest('.loginFieldContainer')
+    const optionsContainer = document.getElementById('loginOptions')
+    const disclaimerContainer = document.getElementById('loginDisclaimer')
+    const subheader = document.getElementById('loginSubheader')
+
+    if(isOfflineMode){
+        if(passFieldContainer) $(passFieldContainer).hide()
+        if(optionsContainer) $(optionsContainer).hide()
+        if(disclaimerContainer) $(disclaimerContainer).hide()
+        if(subheader) subheader.innerHTML = 'MODO OFFLINE (NÃO-ORIGINAL)'
+        loginUsername.placeholder = 'NICK NO JOGO'
+        lp = true
+        if(loginUsername.value && validUsername.test(loginUsername.value)){
+            lu = true
+            loginDisabled(false)
+        } else {
+            lu = false
+            loginDisabled(true)
+        }
+    } else {
+        if(passFieldContainer) $(passFieldContainer).show()
+        if(optionsContainer) $(optionsContainer).show()
+        if(disclaimerContainer) $(disclaimerContainer).show()
+        if(subheader) subheader.innerHTML = Lang.queryJS('login.loginSubheader')
+        loginUsername.placeholder = Lang.queryJS('login.loginEmailPlaceholder')
+        lp = Boolean(loginPassword.value)
+        validateEmail(loginUsername.value)
+    }
+}
 
 
 /**
@@ -53,6 +86,18 @@ function shakeError(element){
  */
 function validateEmail(value){
     if(value){
+        if(isOfflineMode){
+            if(!validUsername.test(value)){
+                showError(loginEmailError, 'Nick inválido (1-16 caracteres, letras/números/_)')
+                loginDisabled(true)
+                lu = false
+            } else {
+                loginEmailError.style.opacity = 0
+                lu = true
+                loginDisabled(false)
+            }
+            return
+        }
         if(!basicEmail.test(value) && !validUsername.test(value)){
             showError(loginEmailError, Lang.queryJS('login.error.invalidValue'))
             loginDisabled(true)
@@ -187,7 +232,11 @@ loginButton.addEventListener('click', () => {
     // Show loading stuff.
     loginLoading(true)
 
-    AuthManager.addMojangAccount(loginUsername.value, loginPassword.value).then((value) => {
+    const authPromise = isOfflineMode
+        ? AuthManager.addOfflineAccount(loginUsername.value)
+        : AuthManager.addMojangAccount(loginUsername.value, loginPassword.value)
+
+    authPromise.then((value) => {
         updateSelectedAccount(value)
         loginButton.innerHTML = loginButton.innerHTML.replace(Lang.queryJS('login.loggingIn'), Lang.queryJS('login.success'))
         $('.circle-loader').toggleClass('load-complete')

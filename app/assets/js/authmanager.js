@@ -416,10 +416,34 @@ async function validateSelectedMicrosoftAccount(){
 exports.validateSelected = async function(){
     const current = ConfigManager.getSelectedAccount()
 
-    if(current.type === 'microsoft') {
+    if(current.type === 'offline') {
+        return true
+    } else if(current.type === 'microsoft') {
         return await validateSelectedMicrosoftAccount()
     } else {
         return await validateSelectedMojangAccount()
     }
     
+}
+
+/**
+ * Add an Offline / Non-Premium account.
+ * 
+ * @param {string} username The player's chosen nickname.
+ * @returns {Promise.<Object>} The created account object.
+ */
+exports.addOfflineAccount = async function(username) {
+    try {
+        const crypto = require('crypto')
+        const cleanName = username.trim()
+        const md5 = crypto.createHash('md5').update('OfflinePlayer:' + cleanName).digest('hex')
+        const uuid = md5.replace(/^(.{8})(.{4})(.{4})(.{4})(.{12})$/, '$1-$2-$3-$4-$5')
+        const ret = ConfigManager.addMojangAuthAccount(uuid, '0', cleanName, cleanName)
+        ret.type = 'offline'
+        ConfigManager.save()
+        return Promise.resolve(ret)
+    } catch(err) {
+        log.error('Error adding offline account:', err)
+        return Promise.reject(err)
+    }
 }

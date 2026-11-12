@@ -1,0 +1,342 @@
+[ejs.landing]
+updateAvailableTooltip = "Atualização Disponível"
+usernamePlaceholder = "Nome de Usuário"
+usernameEditButton = "Editar"
+settingsTooltip = "Configurações"
+serverStatus = "SERVIDOR"
+serverStatusPlaceholder = "OFFLINE"
+mojangStatus = "STATUS MOJANG"
+mojangStatusTooltipTitle = "Serviços"
+mojangStatusNETitle = "Não&nbsp;Essenciais"
+newsButton = "NOTÍCIAS"
+launchButton = "JOGAR"
+launchButtonPlaceholder = "&#8226; Nenhum Servidor Selecionado"
+launchDetails = "Aguarde um momento.."
+newsNavigationStatus = "{currentPage} de {totalPages}"
+newsErrorLoadSpan = "Procurando notícias.."
+newsErrorFailedSpan = "Falha ao carregar notícias"
+newsErrorRetryButton = "Tentar Novamente"
+newsErrorNoneSpan = "Nenhuma notícia"
+
+[ejs.login]
+loginCancelText = "Cancelar"
+loginSubheader = "ENTRAR NO MINECRAFT"
+loginEmailError = "* Valor Inválido"
+loginEmailPlaceholder = "E-MAIL OU USUÁRIO"
+loginPasswordError = "* Obrigatório"
+loginPasswordPlaceholder = "SENHA"
+loginForgotPasswordLink = "https://minecraft.net/password/forgot/"
+loginForgotPasswordText = "esqueceu a senha?"
+loginRememberMeText = "lembrar de mim?"
+loginButtonText = "ENTRAR"
+loginNeedAccountLink = "https://minecraft.net/store/minecraft-java-edition/"
+loginNeedAccountText = "Precisa de uma conta?"
+loginPasswordDisclaimer1 = "Sua senha é enviada diretamente e nunca é salva."
+loginPasswordDisclaimer2 = "{appName} não é afiliado à Mojang AB."
+
+[ejs.loginOptions]
+loginOptionsTitle = "Opções de Login"
+loginWithMicrosoft = "Conta Microsoft (Original)"
+loginWithMojang = "Conta Mojang Legada"
+loginWithOffline = "Jogar Offline (Não-Original)"
+cancelButton = "Cancelar"
+
+[ejs.overlay]
+serverSelectHeader = "Servidores Disponíveis"
+serverSelectConfirm = "Selecionar"
+serverSelectCancel = "Cancelar"
+accountSelectHeader = "Selecionar uma Conta"
+accountSelectConfirm = "Selecionar"
+accountSelectCancel = "Cancelar"
+
+[ejs.settings]
+navHeaderText = "Configurações"
+navAccount = "Conta"
+navMinecraft = "Minecraft"
+navMods = "Mods"
+navJava = "Java"
+navLauncher = "Launcher"
+navAbout = "Sobre"
+navUpdates = "Atualizações"
+navDone = "Concluir"
+tabAccountHeaderText = "Configurações de Conta"
+tabAccountHeaderDesc = "Adicione novas contas ou gerencie as existentes."
+microsoftAccount = "Microsoft (Original)"
+addMicrosoftAccount = "+ Adicionar Conta Microsoft"
+mojangAccount = "Mojang"
+addMojangAccount = "+ Adicionar Conta Mojang"
+minecraftTabHeaderText = "Configurações do Minecraft"
+minecraftTabHeaderDesc = "Opções relacionadas à inicialização do jogo."
+gameResolutionTitle = "Resolução do Jogo"
+launchFullscreenTitle = "Iniciar em tela cheia."
+autoConnectTitle = "Conectar automaticamente ao servidor ao iniciar."
+launchDetachedTitle = "Executar processo do jogo desanexado do launcher."
+launchDetachedDesc = "Se não estiver desanexado, fechar o launcher fechará o jogo."
+tabModsHeaderText = "Configurações de Mods"
+tabModsHeaderDesc = "Ativar ou desativar mods opcionais."
+switchServerButton = "Trocar"
+requiredMods = "Mods Obrigatórios"
+optionalMods = "Mods Opcionais"
+dropinMods = "Mods Adicionais (Drop-in)"
+addMods = "Adicionar Mods"
+dropinRefreshNote = "(F5 para Atualizar)"
+shaderpacks = "Shaders"
+shaderpackDesc = "Ative ou desative shaders. Requer placa de vídeo dedicada para bom desempenho."
+selectShaderpack = "Selecionar Shader"
+tabJavaHeaderText = "Configurações do Java"
+tabJavaHeaderDesc = "Gerencie a alocação de memória e Java (avançado)."
+memoryTitle = "Memória RAM"
+maxRAM = "RAM Máxima"
+minRAM = "RAM Mínima"
+memoryDesc = "O mínimo recomendado é 3 a 4 Gigabytes para rodar todos os mods e pacotes."
+memoryTotalTitle = "Total"
+memoryAvailableTitle = "Disponível"
+javaExecutableTitle = "Executável do Java"
+javaExecSelDialogTitle = "Selecionar Executável do Java"
+javaExecSelButtonText = "Escolher Arquivo"
+javaExecDesc = "O executável do Java é validado antes da inicialização."
+javaPathDesc = "O caminho deve terminar com <strong>{pathSuffix}</strong>."
+jvmOptsTitle = "Opções JVM Adicionais"
+jvmOptsDesc = "Parâmetros passados à JVM. Não inclua <em>-Xms</em> ou <em>-Xmx</em> aqui."
+launcherTabHeaderText = "Configurações do Launcher"
+launcherTabHeaderDesc = "Opções de idioma e diretórios do cliente."
+allowPrereleaseTitle = "Permitir atualizações de pré-lançamento."
+allowPrereleaseDesc = "Recebe versões preliminares de teste antes de todos."
+dataDirectoryTitle = "Diretório de Dados"
+selectDataDirectory = "Selecionar Diretório de Dados"
+chooseFolder = "Escolher Pasta"
+dataDirectoryDesc = "Onde todos os arquivos de instâncias e mods são armazenados."
+aboutTabHeaderText = "Sobre"
+aboutTabHeaderDesc = "Informações sobre o projeto e versão."
+aboutTitle = "{appName}"
+stableRelease = "Versão Estável"
+versionText = "Versão "
+sourceGithub = "Código Fonte (GitHub)"
+support = "Suporte"
+devToolsConsole = "Console DevTools"
+releaseNotes = "Notas da Versão"
+changelog = "Histórico de Mudanças"
+noReleaseNotes = "Sem notas disponíveis"
+viewReleaseNotes = "Ver no GitHub"
+launcherUpdatesHeaderText = "Atualizações"
+launcherUpdatesHeaderDesc = "Verifique atualizações do SteelPact Launcher."
+checkForUpdates = "Buscar Atualizações"
+whatsNew = "O que há de novo"
+updateReleaseNotes = "Notas da Atualização"
+
+[ejs.waiting]
+waitingText = "Aguardando login..."
+
+[ejs.welcome]
+welcomeHeader = "BEM-VINDO AO STEELPACT"
+welcomeDescription = "Um universo geopolítico militar, soberania territorial, logística bélica, diplomacia formal e gestão estratégica de facções no Minecraft 1.7.10."
+welcomeDescCTA = "Você está a apenas um clique da linha de frente."
+continueButton = "CONTINUAR"
+
+[js.discord]
+waiting = "Aguardando cliente..."
+state = "Servidor: {shortId}"
+
+[js.index]
+microsoftLoginTitle = "Login Microsoft"
+microsoftLogoutTitle = "Desconectar Microsoft"
+
+[js.login]
+login = "ENTRAR"
+loggingIn = "ENTRANDO..."
+success = "SUCESSO"
+tryAgain = "Tentar Novamente"
+
+[js.login.error]
+invalidValue = "* Valor Inválido"
+requiredValue = "* Obrigatório"
+
+[js.login.error.unknown]
+title = "Erro Durante o Login"
+desc = "Ocorreu um erro desconhecido. Verifique o console para mais detalhes."
+
+[js.landing.launch]
+pleaseWait = "Aguarde um momento.."
+failureTitle = "Erro ao Iniciar o Jogo"
+failureText = "Verifique o console (CTRL + Shift + i) para mais detalhes."
+okay = "OK"
+
+[js.landing.selectedAccount]
+noAccountSelected = "Nenhuma Conta Selecionada"
+
+[js.landing.selectedServer]
+noSelection = "Nenhum Servidor Selecionado"
+loading = "Carregando.."
+
+[js.landing.serverStatus]
+server = "SERVIDOR"
+offline = "OFFLINE"
+players = "JOGADORES"
+
+[js.landing.systemScan]
+checking = "Verificando sistema.."
+noCompatibleJava = "Nenhuma Instalação<br>do Java Compatível Encontrada"
+installJavaMessage = "Para iniciar o SteelPact, você precisa do Java {major} de 64 bits instalado. Deseja instalar agora?"
+installJava = "Instalar Java"
+installJavaManually = "Instalar Manualmente"
+javaDownloadPrepare = "Preparando Download do Java.."
+
+[js.landing.downloadJava]
+findJdkFailure = "Falha ao encontrar distribuição do Java."
+javaDownloadCorruptedError = "O arquivo baixado do Java parece corrompido."
+extractingJava = "Extraindo Java.."
+javaInstalled = "Java Instalado com Sucesso!"
+
+[js.landing.dlAsync]
+loadingServerInfo = "Carregando informações do servidor.."
+fatalError = "Erro Fatal"
+unableToLoadDistributionIndex = "Não foi possível carregar a distribuição. Verifique sua conexão com a internet."
+pleaseWait = "Aguarde um momento.."
+errorDuringLaunchTitle = "Erro na Inicialização"
+seeConsoleForDetails = "Verifique o console para mais detalhes."
+validatingFileIntegrity = "Verificando integridade dos mods e arquivos.."
+errorDuringFileVerificationTitle = "Erro na Verificação dos Arquivos"
+downloadingFiles = "Baixando arquivos e atualizações.."
+errorDuringFileDownloadTitle = "Erro no Download dos Arquivos"
+preparingToLaunch = "Preparando ambiente de jogo.."
+launchingGame = "Iniciando o Minecraft SteelPact.."
+launchWrapperNotDownloaded = "Falha ao descompactar componentes do Forge."
+doneEnjoyServer = "Pronto! Bom jogo no SteelPact!"
+checkConsoleForDetails = "Verifique o console para mais detalhes."
+
+[js.landing.news]
+checking = "Buscando Notícias.."
+
+[js.landing.discord]
+loading = "Carregando mods.."
+joining = "Conectando ao SteelPact!"
+joined = "Jogando no SteelPact!"
+
+[js.overlay]
+dismiss = "Fechar"
+
+[js.settings.fileSelectors]
+executables = "Executáveis"
+allFiles = "Todos os Arquivos"
+
+[js.settings.mstfLogin]
+errorTitle = "Erro de Autenticação"
+errorMessage = "Falha na autenticação Microsoft. Tente novamente."
+okButton = "OK"
+
+[js.settings.mstfLogout]
+errorTitle = "Erro ao Desconectar"
+errorMessage = "Falha ao desconectar conta. Tente novamente."
+okButton = "OK"
+
+[js.settings.authAccountSelect]
+selectButton = "Selecionar Conta"
+selectedButton = "Conta Selecionada &#10004;"
+
+[js.settings.authAccountLogout]
+lastAccountWarningTitle = "Atenção<br>Esta é sua única conta"
+lastAccountWarningMessage = "Para usar o launcher, você precisa ter ao menos uma conta conectada.<br><br>Tem certeza de que deseja sair?"
+confirmButton = "Sim, Tenho Certeza"
+cancelButton = "Cancelar"
+
+[js.settings.authAccountPopulate]
+username = "Nome de Usuário"
+uuid = "UUID"
+selectAccount = "Selecionar Conta"
+selectedAccount = "Selecionada ✓"
+logout = "Sair"
+
+[js.settings.dropinMods]
+removeButton = "Remover"
+deleteFailedTitle = "Falha ao Deletar Mod"
+deleteFailedMessage = "Certifique-se de que o jogo está fechado e tente novamente."
+failedToggleTitle = "Falha ao Alternar Mod"
+okButton = "OK"
+
+[js.settings.serverListing]
+mainServer = "Servidor Principal"
+
+[js.settings.java]
+selectedJava = "Selecionado: Java {version} ({vendor})"
+invalidSelection = "Seleção Inválida"
+requiresJava = "Requer Java {major} de 64 bits."
+availableOptions = "Opções Disponíveis para o Java {major}"
+
+[js.settings.about]
+preReleaseTitle = "Pré-lançamento"
+stableReleaseTitle = "Versão Estável"
+releaseNotesFailed = "Falha ao carregar notas."
+
+[js.settings.updates]
+newReleaseTitle = "Nova Atualização Disponível"
+newPreReleaseTitle = "Nova Atualização de Testes"
+downloadingButton = "Baixando.."
+downloadButton = "Baixar Atualização"
+latestVersionTitle = "Você está na versão mais recente"
+checkForUpdatesButton = "Buscar Atualizações"
+checkingForUpdatesButton = "Verificando.."
+
+[js.settings.msftLogin]
+errorTitle = "Falha no Login Microsoft"
+errorMessage = "Não foi possível autenticar sua conta Microsoft."
+okButton = "OK"
+
+[js.uibinder.startup]
+fatalErrorTitle = "Erro Fatal: Não foi possível carregar a Distribuição"
+fatalErrorMessage = "Não foi possível conectar aos servidores para obter a lista de arquivos. Verifique sua conexão com a internet."
+closeButton = "Fechar"
+
+[js.uibinder.validateAccount]
+failedMessageTitle = "Falha ao Atualizar Login"
+failedMessage = "Não foi possível renovar a sessão de <strong>{account}</strong>. Faça login novamente."
+failedMessageSelectAnotherAccount = "Sessão expirada para <strong>{account}</strong>. Faça login novamente."
+loginButton = "Entrar"
+selectAnotherAccountButton = "Trocar de Conta"
+
+[js.uicore.autoUpdate]
+checkingForUpdateButton = "Buscando atualizações..."
+installNowButton = "Instalar Agora"
+checkForUpdatesButton = "Buscar Atualizações"
+
+[js.auth.microsoft.error]
+noProfileTitle = "Erro no Login:<br>Perfil não Configurado"
+noProfileDesc = "Sua conta Microsoft não possui um perfil do Minecraft Java Edition configurado no Minecraft.net."
+noXboxAccountTitle = "Erro no Login:<br>Sem Conta Xbox"
+noXboxAccountDesc = "Não há perfil do Xbox vinculado a esta conta."
+xblBannedTitle = "Erro no Login:<br>Xbox Live Indisponível"
+xblBannedDesc = "Serviços Xbox Live indisponíveis no momento."
+under18Title = "Erro no Login:<br>Aprovação de Responsável Necessária"
+under18Desc = "Contas de menores de 18 anos precisam estar vinculadas a um grupo familiar da Microsoft."
+unknownTitle = "Erro Desconhecido no Login"
+unknownDesc = "Ocorreu um erro durante a autenticação. Verifique o console para mais detalhes."
+
+[js.auth.mojang.error]
+methodNotAllowedTitle = "Erro Interno"
+methodNotAllowedDesc = "Método não permitido."
+notFoundTitle = "Erro Interno"
+notFoundDesc = "Servidor de autenticação não encontrado."
+accountMigratedTitle = "Conta Migrada"
+accountMigratedDesc = "Esta conta já foi migrada para a Microsoft. Utilize o login Microsoft."
+invalidCredentialsTitle = "Credenciais Inválidas"
+invalidCredentialsDesc = "O e-mail ou senha inseridos estão incorretos."
+tooManyAttemptsTitle = "Muitas Tentativas"
+tooManyAttemptsDesc = "Muitas tentativas de login recentes. Aguarde alguns minutos."
+invalidTokenTitle = "Token Inválido"
+invalidTokenDesc = "Sessão expirada ou token inválido."
+tokenHasProfileTitle = "Perfil Já Vinculado"
+tokenHasProfileDesc = "Token já possui perfil associado."
+credentialsMissingTitle = "Dados Incompletos"
+credentialsMissingDesc = "Preencha todos os campos obrigatórios."
+invalidSaltVersionTitle = "Versão Inválida"
+invalidSaltVersionDesc = "Versão de criptografia inválida."
+unsupportedMediaTypeTitle = "Erro Interno"
+unsupportedMediaTypeDesc = "Tipo de mídia não suportado."
+accountGoneTitle = "Conta Migrada"
+accountGoneDesc = "Esta conta foi migrada. Utilize a opção Entrar com Microsoft."
+unreachableTitle = "Servidor Inacessível"
+unreachableDesc = "Não foi possível conectar aos servidores de autenticação."
+gameNotPurchasedTitle = "Jogo Não Adquirido"
+gameNotPurchasedDesc = "Esta conta não possui o Minecraft Java Edition adquirido."
+unknownErrorTitle = "Erro Desconhecido"
+unknownErrorDesc = "Ocorreu um erro desconhecido durante o login."
+

@@ -32,11 +32,15 @@ exports.queryEJS = function(id, placeHolders){
     return exports.query(`ejs.${id}`, placeHolders)
 }
 
-exports.setupLanguage = function(){
-    // Load Language Files
+exports.setupLanguage = function(selectedLang){
+    // Base English
     exports.loadLanguage('en_US')
-    // Uncomment this when translations are ready
-    //exports.loadLanguage('xx_XX')
+
+    // Portuguese translation
+    const userLang = selectedLang || 'pt_BR'
+    if(userLang === 'pt_BR' || userLang.startsWith('pt')){
+        exports.loadLanguage('pt_BR')
+    }
 
     // Load Custom Language File for Launcher Customizer
     exports.loadLanguage('_custom')
