@@ -768,6 +768,15 @@ async function resolveModsForUI(){
 
     document.getElementById('settingsReqModsContent').innerHTML = modStr.reqMods
     document.getElementById('settingsOptModsContent').innerHTML = modStr.optMods
+
+    const reqContainer = document.getElementById('settingsReqModsContainer')
+    if(reqContainer) {
+        reqContainer.style.display = modStr.reqMods.trim() ? 'block' : 'none'
+    }
+    const optContainer = document.getElementById('settingsOptModsContainer')
+    if(optContainer) {
+        optContainer.style.display = modStr.optMods.trim() ? 'block' : 'none'
+    }
 }
 
 /**
@@ -904,9 +913,20 @@ let CACHE_DROPIN_MODS
  * populate the results onto the UI.
  */
 async function resolveDropinModsForUI(){
-    const serv = (await DistroAPI.getDistribution()).getServerById(ConfigManager.getSelectedServer())
+    const distro = await DistroAPI.getDistribution()
+    const serv = distro.getServerById(ConfigManager.getSelectedServer())
     CACHE_SETTINGS_MODS_DIR = path.join(ConfigManager.getInstanceDirectory(), serv.rawServer.id, 'mods')
-    CACHE_DROPIN_MODS = DropinModUtil.scanForDropinMods(CACHE_SETTINGS_MODS_DIR, serv.rawServer.minecraftVersion)
+    
+    // Obter lista de arquivos que são da distribuição oficial para não listá-los como Drop-in opcionais
+    const distroFiles = new Set()
+    for(const m of serv.modules){
+        if(m.artifact && m.artifact.path && m.artifact.path.startsWith('mods/')){
+            distroFiles.add(path.basename(m.artifact.path).toLowerCase())
+        }
+    }
+
+    const allDiscovered = DropinModUtil.scanForDropinMods(CACHE_SETTINGS_MODS_DIR, serv.rawServer.minecraftVersion)
+    CACHE_DROPIN_MODS = allDiscovered.filter(d => !distroFiles.has(path.basename(d.fullName).toLowerCase()))
 
     let dropinMods = ''
 
