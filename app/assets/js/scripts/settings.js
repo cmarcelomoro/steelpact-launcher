@@ -321,9 +321,51 @@ function settingsSaveDisabled(v){
     settingsNavDone.disabled = v
 }
 
+function bindLanguageSelect() {
+    const cont = document.getElementById('settingsLanguageOptions')
+    if(!cont) return
+    const currentLang = ConfigManager.getLanguage() || ''
+    for(let opt of cont.children) {
+        const val = opt.getAttribute('val') || ''
+        if(val === currentLang) {
+            opt.setAttribute('selected', '')
+            document.getElementById('settingsLanguageSelected').innerHTML = opt.innerHTML
+        } else {
+            opt.removeAttribute('selected')
+        }
+        opt.addEventListener('click', function(e) {
+            this.parentNode.previousElementSibling.innerHTML = this.innerHTML
+            for(let sib of this.parentNode.children){
+                sib.removeAttribute('selected')
+            }
+            this.setAttribute('selected', '')
+            closeSettingsSelect()
+        })
+    }
+}
+
+function saveLanguageSettings() {
+    const cont = document.getElementById('settingsLanguageOptions')
+    if(!cont) return
+    let chosen = null
+    for(let opt of cont.children) {
+        if(opt.hasAttribute('selected')) {
+            const val = opt.getAttribute('val')
+            chosen = val ? val : null
+        }
+    }
+    const previous = ConfigManager.getLanguage()
+    ConfigManager.setLanguage(chosen)
+    if(previous !== chosen) {
+        // Reload launcher window to apply language everywhere smoothly
+        remote.getCurrentWindow().reload()
+    }
+}
+
 function fullSettingsSave() {
     saveSettingsValues()
     saveModConfiguration()
+    saveLanguageSettings()
     ConfigManager.save()
     saveDropinModConfiguration()
     saveShaderpackSettings()
@@ -1574,6 +1616,7 @@ async function prepareSettings(first = false) {
         setupSettingsTabs()
         initSettingsValidators()
         prepareUpdateTab()
+        bindLanguageSelect()
     } else {
         await prepareModsTab()
     }

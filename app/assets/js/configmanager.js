@@ -39,6 +39,22 @@ exports.setDataDirectory = function (dataDirectory) {
     config.settings.launcher.dataDirectory = dataDirectory
 }
 
+/**
+ * Get the selected language. If null, auto-detects from OS.
+ */
+exports.getLanguage = function () {
+    return config.settings.launcher.language || null
+}
+
+/**
+ * Set the language preference.
+ * 
+ * @param {string|null} language The language code ('pt_BR', 'en_US', or null for auto).
+ */
+exports.setLanguage = function (language) {
+    config.settings.launcher.language = language
+}
+
 const configPath = path.join(exports.getLauncherDirectory(), 'config.json')
 const configPathLEGACY = path.join(dataPath, 'config.json')
 const firstLaunch = !fs.existsSync(configPath) && !fs.existsSync(configPathLEGACY)
@@ -86,7 +102,8 @@ const DEFAULT_CONFIG = {
         },
         launcher: {
             allowPrerelease: false,
-            dataDirectory: dataPath
+            dataDirectory: dataPath,
+            language: null
         }
     },
     newsCache: {

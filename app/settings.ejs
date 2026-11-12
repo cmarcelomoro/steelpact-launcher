@@ -275,6 +275,22 @@
             </div>
             <div class="settingsFieldContainer">
                 <div class="settingsFieldLeft">
+                    <span class="settingsFieldTitle"><%- lang('settings.languageTitle') %></span>
+                    <span class="settingsFieldDesc"><%- lang('settings.languageDesc') %></span>
+                </div>
+                <div class="settingsFieldRight">
+                    <div class="settingsSelectContainer" style="width: 200px;">
+                        <div class="settingsSelectSelected" id="settingsLanguageSelected"><%- lang('settings.languageAuto') %></div>
+                        <div class="settingsSelectOptions" id="settingsLanguageOptions" hidden>
+                            <div val="" <%- !ConfigManager.getLanguage() ? 'selected' : '' %>><%- lang('settings.languageAuto') %></div>
+                            <div val="pt_BR" <%- ConfigManager.getLanguage() === 'pt_BR' ? 'selected' : '' %>>Português (Brasil)</div>
+                            <div val="en_US" <%- ConfigManager.getLanguage() === 'en_US' ? 'selected' : '' %>>English (US)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="settingsFieldContainer">
+                <div class="settingsFieldLeft">
                     <span class="settingsFieldTitle"><%- lang('settings.allowPrereleaseTitle') %></span>
                     <span class="settingsFieldDesc"><%- lang('settings.allowPrereleaseDesc') %></span>
                 </div>

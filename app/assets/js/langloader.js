@@ -32,16 +32,63 @@ exports.queryEJS = function(id, placeHolders){
     return exports.query(`ejs.${id}`, placeHolders)
 }
 
+function getSystemLanguage() {
+    try {
+        const electron = require('electron')
+        const app = electron.app || (electron.remote && electron.remote.app)
+        if (app && typeof app.getLocale === 'function') {
+            const loc = app.getLocale()
+            if (loc) {
+                return loc.replace('-', '_')
+            }
+        }
+    } catch (_e) {}
+
+    const envLang = process.env.LANG || process.env.LANGUAGE || process.env.LC_ALL || process.env.LC_MESSAGES
+    if (envLang) {
+        return envLang.split('.')[0]
+    }
+    return Intl.DateTimeFormat().resolvedOptions().locale.replace('-', '_')
+}
+
+exports.getEffectiveLanguage = function(selectedLang) {
+    if (selectedLang) {
+        return selectedLang
+    }
+    try {
+        const ConfigManager = require('./configmanager')
+        const cfgLang = ConfigManager.getLanguage()
+        if (cfgLang) {
+            return cfgLang
+        }
+    } catch (_e) {}
+
+    const sys = getSystemLanguage()
+    if (sys.startsWith('pt')) {
+        return 'pt_BR'
+    }
+    return 'en_US'
+}
+
 exports.setupLanguage = function(selectedLang){
-    // Base English
+    // Reset lang map
+    lang = {}
+
+    // Base English always loaded first as fallback
     exports.loadLanguage('en_US')
 
-    // Portuguese translation
-    const userLang = selectedLang || 'pt_BR'
-    if(userLang === 'pt_BR' || userLang.startsWith('pt')){
-        exports.loadLanguage('pt_BR')
+    // Determine target language
+    const target = exports.getEffectiveLanguage(selectedLang)
+    if (target !== 'en_US') {
+        try {
+            exports.loadLanguage(target)
+        } catch (_e) {
+            // fallback to base English
+        }
     }
 
     // Load Custom Language File for Launcher Customizer
-    exports.loadLanguage('_custom')
+    try {
+        exports.loadLanguage('_custom')
+    } catch (_e) {}
 }
