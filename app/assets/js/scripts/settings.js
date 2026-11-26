@@ -920,8 +920,9 @@ async function resolveDropinModsForUI(){
     // Obter lista de arquivos que são da distribuição oficial para não listá-los como Drop-in opcionais
     const distroFiles = new Set()
     for(const m of serv.modules){
-        if(m.artifact && m.artifact.path && m.artifact.path.startsWith('mods/')){
-            distroFiles.add(path.basename(m.artifact.path).toLowerCase())
+        const artPath = (m.rawModule && m.rawModule.artifact && m.rawModule.artifact.path) || (m.artifact && m.artifact.path)
+        if(artPath && artPath.startsWith('mods/')){
+            distroFiles.add(path.basename(artPath).toLowerCase())
         }
     }
 

@@ -29,6 +29,7 @@ const {
 
 // Internal Requirements
 const DiscordWrapper          = require('./assets/js/discordwrapper')
+const DistroMirror            = require('./assets/js/distromirror')
 const ProcessBuilder          = require('./assets/js/processbuilder')
 
 // Launch Elements
@@ -467,6 +468,12 @@ async function dlAsync(login = true) {
 
     const serv = distro.getServerById(ConfigManager.getSelectedServer())
 
+    try {
+        DistroMirror.syncServerMirror(serv, ConfigManager.getInstanceDirectory())
+    } catch (err) {
+        loggerLaunchSuite.warn('Failed pre-validation distro mirror sync:', err)
+    }
+
     if(login) {
         if(ConfigManager.getSelectedAccount() == null){
             loggerLanding.error('You must be logged into an account.')
@@ -536,6 +543,12 @@ async function dlAsync(login = true) {
     remote.getCurrentWindow().setProgressBar(-1)
 
     fullRepairModule.destroyReceiver()
+
+    try {
+        DistroMirror.syncServerMirror(serv, ConfigManager.getInstanceDirectory())
+    } catch (err) {
+        loggerLaunchSuite.warn('Failed post-repair distro mirror sync:', err)
+    }
 
     setLaunchDetails(Lang.queryJS('landing.dlAsync.preparingToLaunch'))
 

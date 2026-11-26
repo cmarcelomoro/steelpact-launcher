@@ -4,6 +4,7 @@ const os             = require('os')
 const path           = require('path')
 
 const ConfigManager  = require('./configmanager')
+const DistroMirror   = require('./distromirror')
 const { DistroAPI }  = require('./distromanager')
 const LangLoader     = require('./langloader')
 const { LoggerUtil } = require('helios-core')
@@ -37,6 +38,12 @@ function onDistroLoad(data){
             logger.info('Determining default selected server..')
             ConfigManager.setSelectedServer(data.getMainServer().rawServer.id)
             ConfigManager.save()
+        }
+        try {
+            const selectedServ = data.getServerById(ConfigManager.getSelectedServer())
+            DistroMirror.syncServerMirror(selectedServ, ConfigManager.getInstanceDirectory())
+        } catch (err) {
+            logger.warn('Failed initial distro mirror sync on startup:', err)
         }
     }
     ipcRenderer.send('distributionIndexDone', data != null)
